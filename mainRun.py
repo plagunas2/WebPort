@@ -53,7 +53,7 @@ def main():
         print("Error: Node.js is not installed or not found in the system's PATH.")
         sys.exit(1)
 
-    command = ['node', jsfile_abs, args.Language, args.Engine, args.MainLoopPath] 
+    command = ['node', jsfile_abs, args.Language, args.Engine, args.MainLoopPath] #change jsfile, will probably need to run in another python file instead
     subprocess.run(command) #run js file with args
 
 if __name__ == '__main__':
