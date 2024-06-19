@@ -5,7 +5,6 @@ import urllib.request
 import zipfile
 import tarfile
 
-
 #compile all .c .cs .py, etc., files to webassembly AFTER code parsing & refactoring
 
 #c, c++
@@ -30,18 +29,21 @@ def download_and_extract(url, extract_to='.'): #download and extract zip files
 
 def setup_emsdk(emsdk_path='emsdk'): #setup emscripten if not on user's system
     if not os.path.exists(emsdk_path):
-        print("Downloading Emscripten SDK...")
-        download_and_extract("https://github.com/emscripten-core/emsdk/", extract_to='.')
+        print("Emsdk not found on system. Downloading Emscripten SDK...")
+        download_and_extract("https://github.com/emscripten-core/emsdk", extract_to='.')
         os.rename("emsdk-main", emsdk_path);
+        print("Emsdk successfully installed.")
     
     os.chdir(emsdk_path)
-    subprocess.run(['git', 'pull'])
+    subprocess.run(['git', 'pull']) #get latest version / changes
     subprocess.run(['./emsdk', 'install', 'latest']) #install latest emsdk version
     subprocess.run(['./emsdk', 'activate', 'latest']) #activate (should set up path automatically)
     os.chdir('..')
+    print("Emsdk successfully set up.")
 
-def c_cpp_to_wasm(emsdk_path, game_file_path, output_path): #uses emscripten to compile
+def c_cpp_to_wasm(game_file_path, output_path): #uses emscripten to compile
     #TODO automatically download emscripten if user doesn't have it
+    setup_emsdk()
     emscripten_path = "C:\Users\prisc\emsdk\upstream\emscripten" #placeholder, replace w user file path later
     emcc_path = os.path.join(emscripten_path, 'emcc.py')
     command = [emcc_path, game_file_path, '-o', output_path, 's', 'WASM=1']
@@ -54,3 +56,7 @@ def c_cpp_to_wasm(emsdk_path, game_file_path, output_path): #uses emscripten to 
 #godot, GDscript
 
 # c# -hardest?-
+
+#main():
+#check engine, language
+#direct to correct compiler

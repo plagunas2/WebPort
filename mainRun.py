@@ -3,7 +3,7 @@ import subprocess
 import os
 import sys
 
-supported_eng = ['Unity', 'Godot', 'none']
+supported_eng = ['Godot', 'none'] #removed unity for now
 supported_lang = ['C', 'C++', 'Python', 'Java']
 #TODO support multiple languages in a game
 
