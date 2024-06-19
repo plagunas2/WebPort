@@ -2,6 +2,7 @@ import argparse
 import subprocess
 import os
 import sys
+import compiler
 
 supported_eng = ['Godot', 'none'] #removed unity for now
 supported_lang = ['C', 'C++', 'Python', 'Java']
@@ -55,6 +56,10 @@ def main():
 
     command = ['node', jsfile_abs, args.Language, args.Engine, args.MainLoopPath] #change jsfile, will probably need to run in another python file instead
     subprocess.run(command) #run js file with args
+
+    #TODO run parsing process
+
+    #TODO run compiler process
 
 if __name__ == '__main__':
     main()
