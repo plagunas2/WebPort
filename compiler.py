@@ -36,15 +36,15 @@ def setup_emsdk(emsdk_path='emsdk'): #setup emscripten if not on user's system
     
     os.chdir(emsdk_path)
     subprocess.run(['git', 'pull'])
-    subprocess.run(['./emsdk', 'install', 'latest'])
-    subprocess.run(['./emsdk', 'activate', 'latest'])
+    subprocess.run(['./emsdk', 'install', 'latest']) #install latest emsdk version
+    subprocess.run(['./emsdk', 'activate', 'latest']) #activate (should set up path automatically)
     os.chdir('..')
 
-def c_cpp_to_wasm(file_path, output_path): #uses emscripten to compile
+def c_cpp_to_wasm(emsdk_path, game_file_path, output_path): #uses emscripten to compile
     #TODO automatically download emscripten if user doesn't have it
     emscripten_path = "C:\Users\prisc\emsdk\upstream\emscripten" #placeholder, replace w user file path later
     emcc_path = os.path.join(emscripten_path, 'emcc.py')
-    command = [emcc_path, file_path, '-o', output_path, 's', 'WASM=1']
+    command = [emcc_path, game_file_path, '-o', output_path, 's', 'WASM=1']
 
 
 #python
