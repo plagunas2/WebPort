@@ -12,8 +12,7 @@ def parse(engine, language, main_loop_path):
     if(language == 'Python'):
         pyGameLoopParser.pythonParser(main_loop_path) #test this
     if(language == 'C' or language == 'C++'):
-            command = ['TODO']
-    subprocess.run(command)
+            print("TODO")
 
 def compile(engine, language, output):
     return 1;
