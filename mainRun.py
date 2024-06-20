@@ -2,11 +2,21 @@ import argparse
 import subprocess
 import os
 import sys
-import compiler
+from Parsers import pyGameLoopParser
 
 supported_eng = ['Godot', 'none'] #removed unity for now
 supported_lang = ['C', 'C++', 'Python', 'Java']
 #TODO support multiple languages in a game
+
+def parse(engine, language, main_loop_path):
+    if(language == 'Python'):
+        command = ['python', pyGameLoopParser, engine, language, main_loop_path] #test this
+    if(language == 'C' or language == 'C++'):
+            command = ['TODO']
+    subprocess.run(command)
+
+def compile(engine, language, output):
+    return 1;
 
 def main():
     parser = argparse.ArgumentParser(description='Port your game to the web!')
@@ -43,7 +53,12 @@ def main():
     if (args.output == None):
         raise Exception("Output File Path is required!")
 
-    #get absolute file path from user's system
+    #TODO parsing process
+    parse(args.Engine, args.Language)
+    
+    
+'''
+  #get absolute file path from user's system
     jsfile_rel = "./main.js"
     jsfile_abs = os.path.abspath(jsfile_rel)
     print(jsfile_abs)
@@ -57,8 +72,7 @@ def main():
     command = ['node', jsfile_abs, args.Language, args.Engine, args.MainLoopPath] #change jsfile, will probably need to run in another python file instead
     subprocess.run(command) #run js file with args
 
-    #TODO run parsing process
-
+'''
     #TODO run compiler process
 
 if __name__ == '__main__':

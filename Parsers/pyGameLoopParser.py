@@ -16,11 +16,27 @@ import ast
 
 global_vars = []
 
-def parsePython(main_loop_path):
+#change main() to async def main()
+class GameLoopTransformer(ast.NodeTransformer):
+    def visit_Main(self, node):
+        if node.name == 'main': 
+            print("Main loop found, modifying...")
+            node.name = 'main'
+            node.async_ = True
+        return node
+    
+#TODO add import asyncio to beginning!
+#TODO move variables!
+#TODO add asyncio.run(main()) to end!
 
-    with open(main_loop_path, 'a') as file:
+def pythonParser(main_loop_path):
+    
+    with open(main_loop_path) as file:
         file_content = file.read()
+    tree = ast.parse(file_content)
 
-    tree = ast.parse(file_content) #format file as tree for traversal
+    transformer = GameLoopTransformer
+    new_main_file = transformer.visit_Main(tree) #put this file somewhere specific
 
-
+    
+    
