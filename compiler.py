@@ -101,7 +101,8 @@ def pygame_to_wasm(game_file_path):
 
 #java -- teaVM
 
-#godot, GDscript
+
+#godot, GDscript, repackage files w webassembly build
 
 # c# -hardest?-
 

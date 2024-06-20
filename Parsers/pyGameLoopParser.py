@@ -10,13 +10,17 @@ end script with asyncio.run(main())
 
 '''
 
-import pygbag
+#import pygbag
 import os
 import ast
 
 global_vars = []
 
 def parsePython(main_loop_path):
-    with open(main_loop_path, 'a') as ml:
-        ml.write("PLACEHOLDER")
+
+    with open(main_loop_path, 'a') as file:
+        file_content = file.read()
+
+    tree = ast.parse(file_content) #format file as tree for traversal
+
 
