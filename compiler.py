@@ -67,13 +67,17 @@ def c_cpp_to_wasm(game_file_path, output_path): #uses emscripten to compile, fig
     command = ['python', emcc_py_path, game_file_path, '-o', output_path, 's', 'WASM=1'] #compile game files!
     #TODO properly implement WASM module
 
+
 ''' python / PyGame / ? '''
 
 #PyGame --> Pygbag compiler
 def pygame_to_wasm(game_file_path, output_path):
-    if not shutil.which('python'):
-        raise Exception("Python not detected on System. Please install Python 3.11.") #
-        sys.exit(1) #come back to this
+    try:
+        subprocess.run(['python', '-V']) #check that python is on user's system
+    except subprocess.CalledProcessError:
+        ("Error: Python is not installed or not found in the System's PATH.")
+        sys.exit(1)
+
 
 
 
