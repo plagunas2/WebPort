@@ -69,6 +69,13 @@ def c_cpp_to_wasm(game_file_path, output_path): #uses emscripten to compile, fig
 
 ''' python / PyGame / ? '''
 
+#PyGame --> Pygbag compiler
+def pygame_to_wasm(game_file_path, output_path):
+    if not shutil.which('python'):
+        raise Exception("Python not detected on System. Please install Python 3.11.") #
+        sys.exit(1) #come back to this
+
+
 
 #java -- teaVM
 
