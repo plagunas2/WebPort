@@ -56,6 +56,9 @@ def main():
     #TODO parsing process
     parse(args.Engine, args.Language)
     
+    #TODO compiling process
+    compile(args.Engine, args.Language, args.GamePath, args.output)
+    
     
 '''
   #get absolute file path from user's system
@@ -73,7 +76,6 @@ def main():
     subprocess.run(command) #run js file with args
 
 '''
-    #TODO run compiler process
 
 if __name__ == '__main__':
     main()
