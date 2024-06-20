@@ -86,20 +86,18 @@ def setup_pygbag():
 
 
 #PyGame --> Pygbag compiler
-def pygame_to_wasm(game_file_path, output_path):
+def pygame_to_wasm(game_file_path):
     try:
         subprocess.run(['python', '-V']) #check that python is on user's system
+        print("Python detected on System. Proceeding with compiling game...")
     except subprocess.CalledProcessError:
         ("Error: Python is not installed or not found in the System's PATH.")
         sys.exit(1)
     
     setup_pygbag()
 
-    
-
-
-
-
+    os.chdir(game_file_path)
+    subprocess.run(['pygbag', game_file_path,])
 
 #java -- teaVM
 
