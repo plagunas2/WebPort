@@ -10,7 +10,7 @@ supported_lang = ['C', 'C++', 'Python', 'Java']
 
 def parse(engine, language, main_loop_path):
     if(language == 'Python'):
-        command = ['python', pyGameLoopParser, engine, language, main_loop_path] #test this
+        pyGameLoopParser.pythonParser(main_loop_path) #test this
     if(language == 'C' or language == 'C++'):
             command = ['TODO']
     subprocess.run(command)
