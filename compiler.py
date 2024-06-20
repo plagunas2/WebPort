@@ -70,6 +70,21 @@ def c_cpp_to_wasm(game_file_path, output_path): #uses emscripten to compile, fig
 
 ''' python / PyGame / ? '''
 
+def setup_pygbag():
+    try:
+        import pygbag
+        print("Pygbag is already installed. Proceeding with compiling game...")
+    except ImportError:
+        ("Pygbag is not installed. Installing pygbag...")
+        subprocess.run(['pip', 'install', 'pygbag', '--user', '--upgrade']) #should work with all OSs
+        try:
+            import pygbag
+            print("Pygbag successfully installed!")
+        except ImportError:
+            ("Failed to install pygbag.")
+            sys.exit(1)
+
+
 #PyGame --> Pygbag compiler
 def pygame_to_wasm(game_file_path, output_path):
     try:
@@ -77,6 +92,11 @@ def pygame_to_wasm(game_file_path, output_path):
     except subprocess.CalledProcessError:
         ("Error: Python is not installed or not found in the System's PATH.")
         sys.exit(1)
+    
+    setup_pygbag()
+
+    
+
 
 
 
