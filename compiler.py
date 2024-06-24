@@ -8,6 +8,7 @@ import shutil
 import platform
 
 #compile all .c .cs .py, etc., files to webassembly AFTER code parsing & refactoring
+#for existing compiling programs (emscripten, etc.), this automates the compiling process
 
 
 ''' c/c++ to WASM compiler
