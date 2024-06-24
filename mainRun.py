@@ -3,6 +3,7 @@ import subprocess
 import os
 import sys
 from Parsers import pyGameLoopParser
+import compiler
 
 supported_eng = ['Godot', 'none'] #removed unity for now
 supported_lang = ['C', 'C++', 'Python', 'Java']
